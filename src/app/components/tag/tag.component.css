@@ -1,0 +1,17 @@
+div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+div a{
+    background-color: #e7e5e5;
+    padding: 0.3rem 1rem;
+    margin: 0.2rem 0.55rem;
+    border-radius: 10rem;
+    font-weight: 600;
+    color: blue;
+}
+div a:hover{
+    background: rgb(252, 198, 97);
+    transform: scale(1.2);
+}

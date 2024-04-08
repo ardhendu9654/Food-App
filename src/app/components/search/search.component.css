@@ -1,0 +1,38 @@
+div{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(12, 6, 42);
+    border: none;
+    border-bottom: 2px solid red;
+}
+input{
+    border-radius: 10rem 0 0 10rem;
+    border: none;
+    height: 2.85rem;
+    width: 20rem;
+    padding-left: 3rem;
+    background-image: linear-gradient(to right,blue , black);
+    color: white;
+    /* padding: 1.1rem; */
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+}
+input:hover{
+    background-image: linear-gradient(to left,blue , black);
+}
+div button{
+    color: gray;
+    height: 3rem;
+    width: 5rem;
+    font-size: 1rem;
+    border-radius: 0 10rem 10rem 0;
+    border: none;
+    background-image: linear-gradient(to left,blue , black);
+    color: white;
+    outline: none;
+}
+div button:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right,blue , black);
+}
