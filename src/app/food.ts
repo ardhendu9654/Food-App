@@ -1,8 +1,8 @@
 export class Food{
-    id! : string;
+    id! : number;
     imageUrl! : string;
     name! :string;
-    price! :string;
+    price! :number;
     favorite! :boolean;
     origins! :string[];
     tags?: string[];

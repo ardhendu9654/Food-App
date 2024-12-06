@@ -1,6 +1,9 @@
+<app-search></app-search>
+<app-tag></app-tag>
+<app-not-found [visible]="!foods || foods.length <=0" resetLinkText="Reset Search"></app-not-found>
 <ul>
     <li *ngFor="let food of foods">
-        <a routerLink="/Food/{{food.id}}">
+        <a routerLink="/food/{{food.id}}">
             <img src="{{food.imageUrl}}" alt="{{food.name}}">
             <div class="content">
                 <div class="name">
