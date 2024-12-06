@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { cart } from 'src/app/cart';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +7,10 @@ import { cart } from 'src/app/cart';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-cart!:cart
+  cartQuantity = 0;
+  constructor(private cartservice:CartService) {
+    cartservice.getCartQuantity().subscribe((newcart)=>{
+      this.cartQuantity = newcart.totalQuantity;
+    })
+   }
 }

@@ -12,16 +12,12 @@ resetLinkText="Go To Home">
                 <a routerLink="/food/{{cartItem.food.id}}">{{cartItem.food.name}}</a>
             </div>
             <div>
-                <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select #quantitySelect [value]="cartItem.quantity" (change)="changeQuantity(cartItem,quantitySelect.value)">
+                    <option *ngFor="let q of [1,2,3,4,5]" [value]="q">{{q}}</option>
                 </select>
             </div>
             <div>
-                {{cartItem.price|currency}}
+                {{cartItem.price|currency:'Rs.'}}
             </div>
             <div>
                 <button class="remove-button" (click)="removeFromCart(cartItem)">
@@ -33,10 +29,10 @@ resetLinkText="Go To Home">
     </ul>
     <div class="checkout">
         <div class="food-count">
-            {{cart.items.length}}
+            {{cart.totalQuantity}}
         </div>
         <div class="total-price">
-            {{cart.totalPrice|currency}}
+            {{cart.totalPrice|currency:'Rs.'}}
         </div>
         <a routerLink="/checkout">Proceed to Checkout</a>
     </div>

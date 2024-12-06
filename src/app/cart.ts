@@ -10,4 +10,11 @@ export class cart{
         });
         return totalPrice;
     }
+    get totalQuantity(): number {
+        let totalQuantity = 0;
+        this.items.forEach(item => {
+          totalQuantity += item.quantity;
+        });
+        return totalQuantity;
+      }
 }
