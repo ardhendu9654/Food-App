@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   foods: Food[] = [];
   constructor(private foodService: FoodService, activatedRoute: ActivatedRoute) {
 
-    localStorage.setItem("islogedIn","false");
+    // localStorage.setItem("islogedIn","false");
 
     activatedRoute.params.subscribe((params) => {
       if (params.searchTerm)
