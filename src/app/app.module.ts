@@ -10,6 +10,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { SelectedFoodComponent } from './components/selected-food/selected-food.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     TagComponent,
     CartPageComponent,
     SelectedFoodComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

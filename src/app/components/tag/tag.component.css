@@ -2,6 +2,8 @@ div{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    border-bottom: 2px solid red;
+
 }
 div a{
     background-color: #e7e5e5;
