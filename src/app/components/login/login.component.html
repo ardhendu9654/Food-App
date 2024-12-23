@@ -20,13 +20,16 @@
     <div class="tab-content">
         <div class="tab-pane fade" [class.show]="activeForm === 'Login'" [class.active]="activeForm === 'Login'"
             id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-            <form *ngIf="activeForm === 'Login'" >
+            <form *ngIf="activeForm === 'Login'" [formGroup]="loginForm" (ngSubmit)="signIn(loginName.value,LoginPassword.value)">
                 <div class="form-outline ">
-                    <input type="email" id="loginName" class="form-control" />
-                    <label class="form-label" >Email or username</label>
+                    <div class="err">{{loginUsername()}}</div>
+                    <input type="text" #loginName class="form-control" formControlName="Username"/>
+                    <label class="form-label" >Username</label>
+                    
                 </div>
                 <div class="form-outline">
-                    <input type="password" id="loginPassword" class="form-control" />
+                    <div class="err">{{loginPassword()}}</div>
+                    <input type="password" #LoginPassword class="form-control" formControlName="pass" />
                     <label class="form-label">Password</label>
                 </div>
                 <div class="row mb-4">
@@ -41,41 +44,33 @@
                         <a class="forgotPass btn">Forgot password?</a>
                     </div>
                 </div>
-
-                <!-- Submit button -->
-                <button type="submit" routerLink="/home" class="btn btn-primary sgn">Sign in</button>
+                <button type="submit" class="btn btn-primary sgn" [disabled]="!loginForm.valid">Sign in</button>
             </form>
         </div>
 
-        <!-- Register Form -->
+        
         <div class="tab-pane fade" [class.show]="activeForm === 'register'" [class.active]="activeForm === 'register'"
             id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-            <form *ngIf="activeForm === 'register'">
-                <!-- Username input -->
-                <div class="form-outline mb-4">
-                    <input type="text" id="registerUsername" class="form-control" />
+            <form *ngIf="activeForm === 'register'" [formGroup]="registerForm" (ngSubmit)="SignUp()">
+
+                <div class="form-outline">
+                    <div class="err">{{regUsername()}}</div>
+                    <input type="text" id="registerUsername" class="form-control" formControlName="Username" />
                     <label class="form-label" for="registerUsername">Username</label>
                 </div>
 
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="registerEmail" class="form-control" />
-                    <label class="form-label" for="registerEmail">Email</label>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" id="registerPassword" class="form-control" />
+                <div class="form-outline">
+                    <div class="err">{{regPassword()}}</div>
+                    <input type="password" id="registerPassword" class="form-control" formControlName="pass"/>
                     <label class="form-label" for="registerPassword">Password</label>
                 </div>
 
-                <!-- Repeat Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" id="registerRepeatPassword" class="form-control" />
+                <div class="form-outline">
+                    <div *ngIf="regrepass()" class="err">{{regrepass()}}</div>
+                    <input type="password" id="registerRepeatPassword" class="form-control" formControlName="repass"/>
                     <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                 </div>
 
-                <!-- Checkbox -->
                 <div class="form-check d-flex justify-content-center mb-4">
                     <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked />
                     <label class="form-check-label" for="registerCheck">
@@ -83,10 +78,8 @@
                     </label>
                 </div>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-3 sgn">Sign up</button>
+                <button type="submit" class="btn btn-primary btn-block mb-3 sgn" [disabled]="!registerForm.valid">Sign up</button>
             </form>
         </div>
     </div>
-    <!-- Pills content -->
 </div>

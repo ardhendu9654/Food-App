@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit {
 
   foods: Food[] = [];
   constructor(private foodService: FoodService, activatedRoute: ActivatedRoute) {
+
+    localStorage.setItem("islogedIn","false");
+
     activatedRoute.params.subscribe((params) => {
       if (params.searchTerm)
       this.foods = this.foodService.getAllFoodsBySearchteams(params.searchTerm);
@@ -24,6 +27,5 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      
   }
 }
