@@ -11,11 +11,10 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   registerForm! : FormGroup;
+  activeForm: string = 'Login';
+
   constructor(private router: Router) { }
 
-
-
-  activeForm: string = 'Login';
   switchForm(formType: string): void {
     this.activeForm = formType;
   }
@@ -25,18 +24,20 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     };
-    if(name == 'papai' && pas == '123456'){
-      localStorage.setItem("islogedIn","true");
-    }
-    else{
-      localStorage.setItem("islogedIn","false")
-    }
+    // if(name == 'Raj' && pas == '123456'){
+    //   localStorage.setItem("islogedIn","true");
+    // }
+    // else{
+    //   localStorage.setItem("islogedIn","false")
+    // }
     const Username = this.loginForm.value.Username
     const pass = this.loginForm.value.pass;
     console.log(Username);
     console.log(pass);
-    this.router.navigate(['/home'])
-
+    localStorage.setItem("Username",Username);
+    this.router.navigate(['/home']).then(()=>{
+      window.location.reload();
+    })
   }
 
   SignUp(){

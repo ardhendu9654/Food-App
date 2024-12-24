@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -8,9 +9,25 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HeaderComponent {
   cartQuantity = 0;
-  constructor(private cartservice:CartService) {
+  username!:string;
+
+  constructor(private cartservice:CartService, private router:Router) {
+
+    this.username = localStorage.getItem("Username") || 'User';
+    console.log(this.username);
+    
+
     cartservice.getCartQuantity().subscribe((newcart)=>{
       this.cartQuantity = newcart.totalQuantity;
     })
    }
+
+   logout(){
+    // localStorage.clear();
+    localStorage.removeItem('Username');
+    this.router.navigate(['/login']).then(()=>{
+      window.location.reload();
+    });
+   }
+
 }
