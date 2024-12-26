@@ -93,17 +93,19 @@ ul .remove-button:hover{
     color: gray;
 }
 .checkout a{
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: red;
     display: block;
+    text-decoration: none;
     width: 90%;
     border-radius: 1rem;
     text-align: center;
-    opacity: .7;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    opacity: 1;
     color: white;
     justify-content: center;
 }
 .checkout a:hover{
-    opacity: 1;
     cursor: pointer;
 }

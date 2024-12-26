@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'search/:searchTerm', component: HomeComponent},
   {path: 'tag/:tag', component: HomeComponent},
   {path: 'food/:id', component:SelectedFoodComponent},
-  {path:'cart-page', component:CartPageComponent}
+  {path:'cart-page', component:CartPageComponent, canActivate:[loginGuard]}
 ];
 
 @NgModule({
