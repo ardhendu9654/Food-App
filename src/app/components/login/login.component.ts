@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     //   localStorage.setItem("islogedIn","false")
     // }
     const Username = this.loginForm.value.Username
-    const pass = this.loginForm.value.pass;
+    const pass = this.loginForm.value.Password;
     console.log(Username);
     console.log(pass);
     localStorage.setItem("Username",Username);
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     }
     console.log('Form is valid');
     const Username = this.registerForm.value.Username
-    const pass = this.registerForm.value.pass;
+    const pass = this.registerForm.value.Password;
     const repass = this.registerForm.value.repass;
     console.log(Username,pass,repass);
     
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginPassword() {
-    const pass = this.loginForm.get('pass');
+    const pass = this.loginForm.get('Password');
     if (pass?.touched && !pass.valid) {
       if (pass.errors?.['required']) {
         return 'Password is required';
@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
   }
 
   regPassword() {
-    const pass = this.registerForm.get('pass');
+    const pass = this.registerForm.get('Password');
     if (pass?.touched && !pass.valid) {
       if (pass.errors?.['required']) {
         return 'Password is required';
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
     return null;
   }
   regrepass(){
-    const pass = this.registerForm.get('pass');
+    const pass = this.registerForm.get('Password');
     const repass = this.registerForm.get('repass');
     if (pass?.touched && !pass.valid) {
       if (pass.errors?.['required']) {
@@ -116,11 +116,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       Username: new FormControl(null, [Validators.required,]),
-      pass: new FormControl(null, [Validators.required, Validators.minLength(6)])
+      Password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
     this.registerForm = new FormGroup({
       Username: new FormControl(null, [Validators.required,]),
-      pass: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      Password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       repass: new FormControl(null,[Validators.required,Validators.minLength(6)])
     });
   }
