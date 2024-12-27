@@ -20,16 +20,16 @@
     <div class="tab-content">
         <div class="tab-pane fade" [class.show]="activeForm === 'Login'" [class.active]="activeForm === 'Login'"
             id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-            <form *ngIf="activeForm === 'Login'" [formGroup]="loginForm" (ngSubmit)="signIn(loginName.value,LoginPassword.value)">
+            <form *ngIf="activeForm === 'Login'" [formGroup]="loginForm" (ngSubmit)="signIn()">
                 <div class="form-outline ">
                     <div class="err">{{loginUsername()}}</div>
-                    <input type="text" #loginName class="form-control" formControlName="Username"/>
+                    <input type="text" #loginName class="form-control" name="Username" formControlName="Username"/>
                     <label class="form-label" >Username</label>
                     
                 </div>
                 <div class="form-outline">
                     <div class="err">{{loginPassword()}}</div>
-                    <input type="password" #LoginPassword class="form-control" formControlName="pass" />
+                    <input type="password" #LoginPassword class="form-control" name="Password" formControlName="Password" />
                     <label class="form-label">Password</label>
                 </div>
                 <div class="row mb-4">

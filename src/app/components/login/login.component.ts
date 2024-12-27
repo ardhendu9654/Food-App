@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,28 +13,33 @@ export class LoginComponent implements OnInit {
   registerForm! : FormGroup;
   activeForm: string = 'Login';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loginService:LoginService) { }
 
   switchForm(formType: string): void {
     this.activeForm = formType;
   }
 
 
-  signIn(name:any,pas:any) {
+  signIn() {
     if (!this.loginForm.valid) {
       return;
     };
-    // if(name == 'Raj' && pas == '123456'){
-    //   localStorage.setItem("islogedIn","true");
-    // }
-    // else{
-    //   localStorage.setItem("islogedIn","false")
-    // }
-    const Username = this.loginForm.value.Username
-    const pass = this.loginForm.value.Password;
-    console.log(Username);
-    console.log(pass);
-    localStorage.setItem("Username",Username);
+
+    const loginData = {
+      Username:this.loginForm.value.Username,
+      Password:this.loginForm.value.Password
+    };
+    this.loginService.login(loginData).subscribe((res)=>{
+      console.log(res);
+      localStorage.setItem("Username",loginData.Username);
+      
+    })
+    
+    // const Username = this.loginForm.value.Username
+    // const pass = this.loginForm.value.pass;
+    // console.log(Username);
+    // console.log(pass);
+    // localStorage.setItem("Username",Username);
     this.router.navigate(['/home']).then(()=>{
       window.location.reload();
     })
@@ -47,14 +52,14 @@ export class LoginComponent implements OnInit {
     }
     console.log('Form is valid');
     const Username = this.registerForm.value.Username
-    const pass = this.registerForm.value.Password;
+    const pass = this.registerForm.value.pass;
     const repass = this.registerForm.value.repass;
     console.log(Username,pass,repass);
     
     this.activeForm = 'Login';
   }
 
-  loginUsername() {
+  loginUsername(): string | null {
     const Username = this.loginForm.get('Username');
     if (Username?.touched && !Username.valid) {
       if (Username.errors?.['required']) {
@@ -64,14 +69,14 @@ export class LoginComponent implements OnInit {
     return null;
   }
 
-  loginPassword() {
-    const pass = this.loginForm.get('Password');
-    if (pass?.touched && !pass.valid) {
-      if (pass.errors?.['required']) {
+  loginPassword(): string | null {
+    const Password = this.loginForm.get('Password');
+    if (Password?.touched && !Password.valid) {
+      if (Password.errors?.['required']) {
         return 'Password is required';
       }
-      if (pass.errors?.['minlength']) {
-        return 'Minimum 6 charecter Required';
+      if (Password.errors?.['minlength']) {
+        return 'Minimum 6 characters required';
       }
     }
     return null;
@@ -88,7 +93,7 @@ export class LoginComponent implements OnInit {
   }
 
   regPassword() {
-    const pass = this.registerForm.get('Password');
+    const pass = this.registerForm.get('pass');
     if (pass?.touched && !pass.valid) {
       if (pass.errors?.['required']) {
         return 'Password is required';
@@ -100,7 +105,7 @@ export class LoginComponent implements OnInit {
     return null;
   }
   regrepass(){
-    const pass = this.registerForm.get('Password');
+    const pass = this.registerForm.get('pass');
     const repass = this.registerForm.get('repass');
     if (pass?.touched && !pass.valid) {
       if (pass.errors?.['required']) {
@@ -120,7 +125,7 @@ export class LoginComponent implements OnInit {
     });
     this.registerForm = new FormGroup({
       Username: new FormControl(null, [Validators.required,]),
-      Password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      pass: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       repass: new FormControl(null,[Validators.required,Validators.minLength(6)])
     });
   }
