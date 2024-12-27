@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { RegisterService } from 'src/app/services/register.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,10 +11,10 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  registerForm! : FormGroup;
+  registerForm!: FormGroup;
   activeForm: string = 'Login';
 
-  constructor(private router: Router, private loginService:LoginService) { }
+  constructor(private router: Router, private loginService: LoginService, private registerService: RegisterService) { }
 
   switchForm(formType: string): void {
     this.activeForm = formType;
@@ -26,36 +27,45 @@ export class LoginComponent implements OnInit {
     };
 
     const loginData = {
-      Username:this.loginForm.value.Username,
-      Password:this.loginForm.value.Password
+      Username: this.loginForm.value.Username,
+      Password: this.loginForm.value.Password
     };
-    this.loginService.login(loginData).subscribe((res)=>{
+    this.loginService.login(loginData).subscribe((res) => {
       console.log(res);
-      localStorage.setItem("Username",loginData.Username);
-      
+      localStorage.setItem("Username", loginData.Username);
+
     })
-    
-    // const Username = this.loginForm.value.Username
+
+    const Username = this.loginForm.value.Username
     // const pass = this.loginForm.value.pass;
     // console.log(Username);
     // console.log(pass);
-    // localStorage.setItem("Username",Username);
-    this.router.navigate(['/home']).then(()=>{
+    localStorage.setItem("Username", Username);
+    this.router.navigate(['/home']).then(() => {
       window.location.reload();
     })
   }
 
-  SignUp(){
+  SignUp() {
     if (!this.registerForm.valid) {
       console.log('Form is invalid');
       return;
     }
-    console.log('Form is valid');
+    const registerData = {
+      Username: this.registerForm.value.Username,
+      Email: this.registerForm.value.Email,
+      Mobile: this.registerForm.value.Mobile,
+      Password: this.registerForm.value.pass
+    }
+    this.registerService.register(registerData).subscribe((res) => {
+      console.log(res);
+
+    })
     const Username = this.registerForm.value.Username
     const pass = this.registerForm.value.pass;
     const repass = this.registerForm.value.repass;
-    console.log(Username,pass,repass);
-    
+    console.log(Username, pass, repass);
+
     this.activeForm = 'Login';
   }
 
@@ -92,6 +102,32 @@ export class LoginComponent implements OnInit {
     return null;
   }
 
+  regemail() {
+    const Email = this.registerForm.get('Email');
+    if (Email?.touched && !Email.valid) {
+      if (Email.errors?.['required']) {
+        return 'Email is required';
+      }
+      if (Email.errors?.['email']) {
+        return 'Should be Email type';
+      }
+    }
+    return null;
+  }
+
+  regMobile() {
+    const Mobile = this.registerForm.get('Mobile');
+    if (Mobile?.touched && !Mobile.valid) {
+      if (Mobile.errors?.['required']) {
+        return 'Mobile is required';
+      }
+      if (Mobile.errors?.['pattern']) {
+        return 'Enter 10 number';
+      }
+    }
+    return null;
+  }
+
   regPassword() {
     const pass = this.registerForm.get('pass');
     if (pass?.touched && !pass.valid) {
@@ -104,7 +140,7 @@ export class LoginComponent implements OnInit {
     }
     return null;
   }
-  regrepass(){
+  regrepass() {
     const pass = this.registerForm.get('pass');
     const repass = this.registerForm.get('repass');
     if (pass?.touched && !pass.valid) {
@@ -125,8 +161,11 @@ export class LoginComponent implements OnInit {
     });
     this.registerForm = new FormGroup({
       Username: new FormControl(null, [Validators.required,]),
+      Email: new FormControl(null, [Validators.required, Validators.email]),
+      Mobile: new FormControl(null, [Validators.required, Validators.maxLength(10),
+      Validators.pattern('^[0-9]{10}$')]),
       pass: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      repass: new FormControl(null,[Validators.required,Validators.minLength(6)])
+      repass: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 }

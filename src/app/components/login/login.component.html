@@ -55,19 +55,31 @@
 
                 <div class="form-outline">
                     <div class="err">{{regUsername()}}</div>
-                    <input type="text" id="registerUsername" class="form-control" formControlName="Username" />
+                    <input type="text" id="registerUsername" class="form-control" name="Username" formControlName="Username" />
                     <label class="form-label" for="registerUsername">Username</label>
                 </div>
 
                 <div class="form-outline">
+                    <div class="err">{{regemail()}}</div>
+                    <input type="email" id="registerEmail" class="form-control" name="Email" formControlName="Email" />
+                    <label class="form-label" for="registerEmail">Email</label>
+                </div>
+
+                <div class="form-outline">
+                    <div class="err">{{regMobile()}}</div>
+                    <input type="number" id="registerMobile" class="form-control" name="Mobile" formControlName="Mobile"/>
+                    <label class="form-label" for="registerMobile">Mobile</label>
+                </div>
+
+                <div class="form-outline">
                     <div class="err">{{regPassword()}}</div>
-                    <input type="password" id="registerPassword" class="form-control" formControlName="pass"/>
+                    <input type="password" id="registerPassword" class="form-control" name="Password" formControlName="pass"/>
                     <label class="form-label" for="registerPassword">Password</label>
                 </div>
 
                 <div class="form-outline">
                     <div *ngIf="regrepass()" class="err">{{regrepass()}}</div>
-                    <input type="password" id="registerRepeatPassword" class="form-control" formControlName="repass"/>
+                    <input type="password" id="registerRepeatPassword" class="form-control" name="Repassword" formControlName="repass"/>
                     <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                 </div>
 
