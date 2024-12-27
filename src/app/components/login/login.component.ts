@@ -30,19 +30,24 @@ export class LoginComponent implements OnInit {
       Username: this.loginForm.value.Username,
       Password: this.loginForm.value.Password
     };
+
     this.loginService.login(loginData).subscribe((res) => {
-      console.log(res);
-      localStorage.setItem("Username", loginData.Username);
-
-    })
-
-    const Username = this.loginForm.value.Username
-    // const pass = this.loginForm.value.pass;
-    // console.log(Username);
-    // console.log(pass);
-    localStorage.setItem("Username", Username);
-    this.router.navigate(['/home']).then(() => {
-      window.location.reload();
+      if (res.message === 'Login successful') {
+        localStorage.setItem("isLogedIn", "true");
+        localStorage.setItem("Username", loginData.Username);
+        // localStorage.setItem("userId", res.userId);
+        this.router.navigate(['/home']).then(() => {
+          window.location.reload();
+        })
+      } else {
+        localStorage.setItem("isLogedIn", "false");
+        alert(res.message);
+      }
+      (error: any) => {
+        console.error('Error logging in:', error);
+        localStorage.setItem("isLogedIn", "false");
+        alert('An error occurred during login. Please try again.');
+      }
     })
   }
 
