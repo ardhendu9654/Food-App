@@ -5,12 +5,12 @@ header{
     border-bottom: 2px solid red;
     font-weight: bold;
 }
-a{
+a,.user{
     color: brown;
     text-decoration: none;
     border-radius: 40px;
 }
-a:hover{
+a:hover,.user:hover{
     background-image: linear-gradient(to top right, red, yellow);
     color: white;
     cursor: pointer;
