@@ -6,11 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:4500/login'; // Backend endpoint
+  private apiUrl = 'http://localhost:4500/login';
+  private apiUrl2 ='http://localhost:4500/foods';
 
   constructor(private http: HttpClient) {}
 
   login(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
+  }
+  getfoods():Observable<any>{
+    return this.http.get(this.apiUrl2)
   }
 }

@@ -5,6 +5,7 @@ require('./DbConnect');
 const app = express();
 const cors = require('cors');
 const registerUser = require('../src/app/Models/registermodel');
+const Food = require('../src/app/Models/foodmodel');
 const port = process.env.PORT || 4500;
 const static_path = path.join(__dirname, "../src/app/components/login")
 
@@ -14,6 +15,12 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(static_path));
 
+
+app.get('/foods',async(req,res)=>{
+  const foodData =await Food.find();
+  console.log(foodData);
+  res.status(200).json(foodData);
+})
 
 app.post('/login', async (req, res) => {
   const { Username, Password } = req.body;

@@ -129,7 +129,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'rice']
     },
     {
-        id: 14,
+        id: 15,
         imageUrl: 'assets/southindian/idli.jpg ',
         name: 'Idli',
         price: 210,
@@ -138,7 +138,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Breakfast']
     },
     {
-        id: 15,
+        id: 16,
         imageUrl: 'assets/southindian/Masala-Dosa.jpg ',
         name: 'Masala Dosa',
         price: 210,
@@ -147,7 +147,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Breakfast']
     },
     {
-        id: 16,
+        id: 17,
         imageUrl: 'assets/southindian/pongal.jpeg',
         name: 'Pongal',
         price: 55,
@@ -156,7 +156,7 @@ export const sample_foods: Food[] = [
         tags: ['Breakfast']
     },
     {
-        id: 17,
+        id: 18,
         imageUrl: 'assets/southindian/Upma.jpg ',
         name: 'Upma',
         price: 50,
@@ -165,7 +165,7 @@ export const sample_foods: Food[] = [
         tags: ['Breakfast']
     },
     {
-        id: 18,
+        id: 19,
         imageUrl: 'assets/chicken/butter chicken.jpg ',
         name: 'butter chicken',
         price: 80,
@@ -174,7 +174,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Chicken']
     },
     {
-        id: 19,
+        id: 20,
         imageUrl: 'assets/chicken/chicken chaap.jpg ',
         name: 'Chicken Chaap',
         price: 120,
@@ -183,7 +183,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Chicken']
     },
     {
-        id: 20,
+        id: 21,
         imageUrl: 'assets/chicken/chicken rezala.jpg ',
         name: 'chicken rezala',
         price: 290,
@@ -192,7 +192,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Chicken']
     },
     {
-        id: 21,
+        id: 22,
         imageUrl: 'assets/chicken/Chicken-Bharta-Recipe-500x500.jpg ',
         name: 'Chicken-Bharta',
         price: 310,
@@ -201,7 +201,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Chicken']
     },
     {
-        id: 22,
+        id: 23,
         imageUrl: 'assets/chicken/dry chili chicken.jpg ',
         name: 'Chili Chicken',
         price: 140,
@@ -210,7 +210,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Chicken']
     },
     {
-        id: 23,
+        id: 24,
         imageUrl: 'assets/chicken/indianstyle chicken curry.jpg ',
         name: 'Chicken Curry',
         price: 210,
@@ -219,7 +219,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'Chicken']
     },
     {
-        id: 24,
+        id: 25,
         imageUrl: 'assets/chinese/Chicken-Chow-Mein-.jpg',
         name: 'Chicken ChowMein',
         price: 85,
@@ -228,7 +228,7 @@ export const sample_foods: Food[] = [
         tags: ['Chicken', 'Breakfast', 'starter']
     },
     {
-        id: 25,
+        id: 26,
         imageUrl: 'assets/chinese/chopsuey.jpg ',
         name: 'Chopsuey',
         price: 99,
@@ -237,7 +237,7 @@ export const sample_foods: Food[] = [
         tags: ['egg', 'Breakfast', 'starter']
     },
     {
-        id: 26,
+        id: 27,
         imageUrl: 'assets/chinese/dim-sum.jpg ',
         name: 'Momo',
         price: 90,
@@ -246,7 +246,7 @@ export const sample_foods: Food[] = [
         tags: ['Chicken', 'Breakfast', 'starter']
     },
     {
-        id: 27,
+        id: 28,
         imageUrl: 'assets/chinese/Spicy-Chicken-Hakka-Noodle.jpg ',
         name: 'Spicy Chicken Hakka Noodle',
         price: 115,
@@ -255,7 +255,7 @@ export const sample_foods: Food[] = [
         tags: ['breakfast','Chicken']
     },
     {
-        id: 28,
+        id: 29,
         imageUrl: 'assets/chinese/wonton-soup.jpg ',
         name: 'Momo combo',
         price: 110,
@@ -264,7 +264,7 @@ export const sample_foods: Food[] = [
         tags: ['breakfast','momo']
     },
     {
-        id: 29,
+        id: 30,
         imageUrl: 'assets/chinese/Sweet-and-Sour-Pork.jpg ',
         name: 'Sweet and Sour Pork',
         price: 160,
@@ -273,7 +273,7 @@ export const sample_foods: Food[] = [
         tags: ['starter']
     },
     {
-        id: 30,
+        id: 31,
         imageUrl: 'assets/mutton/hundi mutton.jpg ',
         name: 'hundi mutton',
         price: 430,
@@ -282,7 +282,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'mutton']
     },
     {
-        id: 31,
+        id: 32,
         imageUrl: 'assets/mutton/mutton chap.jpg ',
         name: 'Mutton Chap',
         price: 410,
@@ -291,7 +291,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'mutton']
     },
     {
-        id: 32,
+        id: 33,
         imageUrl: 'assets/mutton/mutton kosha.jpg',
         name: 'Mutton Kosha',
         price: 385,
@@ -300,7 +300,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'mutton']
     },
     {
-        id: 33,
+        id: 34,
         imageUrl: 'assets/mutton/mutton-curry-.jpg ',
         name: 'Mutton Curry',
         price: 430,
@@ -309,7 +309,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'mutton']
     },
     {
-        id: 34,
+        id: 35,
         imageUrl: 'assets/mutton/mutton-rogan-josh-.jpg ',
         name: 'Mutton Rogan Josh',
         price: 510,
@@ -318,7 +318,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'mutton']
     },
     {
-        id: 35,
+        id: 36,
         imageUrl: 'assets/mutton/mutton-tikka-masala-1-1.jpg ',
         name: 'Mutton Tikka Masala',
         price: 450,
@@ -327,7 +327,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'mutton']
     },
     {
-        id: 36,
+        id: 37,
         imageUrl: 'assets/veg/aloo-chana.jpg ',
         name: 'Aloo Chana',
         price: 40,
@@ -336,7 +336,7 @@ export const sample_foods: Food[] = [
         tags: ['breakfast','veg','starter']
     },
     {
-        id: 37,
+        id: 38,
         imageUrl: 'assets/veg/Kadai-vegetables.jpg ',
         name: 'Kadai Vegetables',
         price: 69,
@@ -345,7 +345,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner','veg']
     },
     {
-        id: 38,
+        id: 39,
         imageUrl: 'assets/veg/mix-veg.jpg ',
         name: 'Mix Veg',
         price: 80,
@@ -354,7 +354,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner','veg']
     },
     {
-        id: 39,
+        id: 40,
         imageUrl: 'assets/veg/rajma-masala.jpg ',
         name: 'Rajma Masala',
         price: 85,
@@ -363,7 +363,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner','veg']
     },
     {
-        id: 40,
+        id: 41,
         imageUrl: 'assets/veg/Vegetable_Makhanwala_Recipe_North_Indian_Punjabi_1.jpg',
         name: 'Vegetable Makhanwala',
         price: 120,
@@ -372,7 +372,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner','veg']
     },
     {
-        id: 41,
+        id: 42,
         imageUrl: 'assets/veg/veg-kolhapuri.jpg ',
         name: 'Veg Kolhapuri',
         price: 45,
@@ -381,7 +381,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner','veg']
     },
     {
-        id: 42,
+        id: 43,
         imageUrl: 'assets/paneer/butter-paneer-masala-.jpg ',
         name: 'Butter Paneer Masala',
         price: 250,
@@ -390,7 +390,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'paneer']
     },
     {
-        id: 43,
+        id: 44,
         imageUrl: 'assets/paneer/Chilli-Paneer-Restaurant-Style.jpg ',
         name: 'Chilli Paneer',
         price: 230,
@@ -399,7 +399,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'paneer']
     },
     {
-        id: 44,
+        id: 45,
         imageUrl: 'assets/paneer/kadai-paneer-recipe.jpg ',
         name: 'kadai Paneer',
         price: 360,
@@ -408,7 +408,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'paneer']
     },
     {
-        id: 45,
+        id: 46,
         imageUrl: 'assets/paneer/palak-paneer-.jpg ',
         name: 'Palak Paneer',
         price: 190,
@@ -417,7 +417,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'paneer']
     },
     {
-        id: 46,
+        id: 47,
         imageUrl: 'assets/paneer/Paneer-rezala-.jpg ',
         name: 'Paneer Rezala',
         price: 210,
@@ -426,7 +426,7 @@ export const sample_foods: Food[] = [
         tags: ['lunch', 'dinner', 'paneer']
     },
     {
-        id: 47,
+        id: 48,
         imageUrl: 'assets/paneer/Shahi_Paneer_.jpg ',
         name: 'Shahi Paneer',
         price: 120,
