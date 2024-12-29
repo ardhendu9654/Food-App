@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Food } from 'src/app/food';
 import { FoodService } from 'src/app/services/food.service';
 
@@ -15,13 +16,19 @@ export class HomeComponent implements OnInit {
 
     // localStorage.setItem("islogedIn","false");
 
+    let foodsObservable:Observable<Food[]>;
+
     activatedRoute.params.subscribe((params) => {
       if (params.searchTerm)
-      this.foods = this.foodService.getAllFoodsBySearchteams(params.searchTerm);
+      foodsObservable = this.foodService.getAllFoodsBySearchteams(params.searchTerm);
       else if(params.tag)
-      this.foods = this.foodService.getAllFoodsByTag(params.tag);
+      foodsObservable = this.foodService.getAllFoodsByTag(params.tag);
       else
-      this.foods = foodService.getAll();
+      foodsObservable = foodService.getAll();
+
+      foodsObservable.subscribe((serverFoods)=>{
+        this.foods = serverFoods;
+      })
     }) 
     
   }

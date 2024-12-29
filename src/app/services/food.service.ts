@@ -2,33 +2,36 @@ import { Injectable } from '@angular/core';
 import { Food } from '../food';
 import { sample_foods, sample_tags } from 'src/data';
 import { Tag } from '../Tag';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { FOODS_BY_ID_URL, FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_TAGS_URL, FOODS_URL } from '../urls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getFoodsById(id:number):Food{
-    return this.getAll().find(food => food.id == id)!;
-  }
-
-  getAll():Food[]{
-    return sample_foods;
+  getAll():Observable<Food[]>{
+    return this.http.get<Food[]>(FOODS_URL);
   }
 
   getAllFoodsBySearchteams(searchTerm:string){
-    return this.getAll().filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    return this.http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm);
   }
 
-  getAllTags():Tag[]{
-    return sample_tags;
+  getFoodsById(id:number):Observable<Food>{
+    return this.http.get<Food>(FOODS_BY_ID_URL + id);
   }
 
-  getAllFoodsByTag(tag:string):Food[]{
+  getAllTags():Observable<Tag[]>{
+    return this.http.get<Tag[]>(FOODS_TAGS_URL);
+  }
+
+  getAllFoodsByTag(tag:string):Observable<Food[]>{
     return tag === "All"?
     this.getAll():
-    this.getAll().filter(food => food.tags?.map(tag => tag.toLowerCase()).includes(tag.toLowerCase()));
+    this.http.get<Food[]>(FOODS_BY_TAG_URL + tag);
   }
 }  

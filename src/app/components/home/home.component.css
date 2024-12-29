@@ -64,8 +64,8 @@ li a img{
 }
 .price{
     position: absolute;
-    bottom: 0;
-    left: 0.9rem;
+    bottom: 10px;
+    left: 160px;
     background: transparent;
     padding: 0.3rem 100% 0 0;
     color: gray;

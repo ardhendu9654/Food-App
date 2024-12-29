@@ -11,15 +11,17 @@ import { FoodService } from 'src/app/services/food.service';
 })
 export class SelectedFoodComponent {
 
-  food!:Food;
-  constructor(private activatedRoute:ActivatedRoute, private foodservice:FoodService,
-     private cartService:CartService, private router:Router){
-    activatedRoute.params.subscribe((parmas)=>{
-      if(parmas['id'])
-        this.food = foodservice.getFoodsById(parmas['id'])
+  food!: Food;
+  constructor(private activatedRoute: ActivatedRoute, private foodservice: FoodService,
+    private cartService: CartService, private router: Router) {
+    activatedRoute.params.subscribe((parmas) => {
+      if (parmas.id)
+        foodservice.getFoodsById(parmas.id).subscribe(serverFood => {
+          this.food = serverFood;
+        });
     })
   }
-  addToCart(){
+  addToCart() {
     this.cartService.addToCart(this.food)
     this.router.navigateByUrl('/cart-page')
   }
