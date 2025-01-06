@@ -4,15 +4,15 @@
         <nav>
             <ul>
                 
-                <li class="menu-container">
-                    <a class="user">{{username}}</a>
+                <li *ngIf="isAuth" class="menu-container">
+                    <a class="user">{{username.Username}}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profile</a>
                         <a routerLink="/order">Order</a>
                         <a (click)="logout()">Logout</a>
                     </div>
                 </li>
-                <li>
+                <li *ngIf="isAuth">
                     <a routerLink="/cart-page">
                         Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>
                     </a>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,25 +11,29 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HeaderComponent {
   cartQuantity = 0;
-  username!:string;
+  username!: User;
 
-  constructor(private cartservice:CartService, private router:Router) {
+  constructor(private cartservice: CartService, private router: Router, private userService: UserService) {
 
-    this.username = localStorage.getItem("Username") || 'User';
-    console.log(this.username);
-    
+    userService.userObservable.subscribe((newUser) => {
+      this.username = newUser ;
+    })
 
-    cartservice.getCartQuantity().subscribe((newcart)=>{
+    cartservice.getCartQuantity().subscribe((newcart) => {
       this.cartQuantity = newcart.totalQuantity;
     })
-   }
+  }
 
-   logout(){
+  logout() {
     // localStorage.clear();
-    localStorage.removeItem('Username');
-    this.router.navigate(['/login']).then(()=>{
+    localStorage.removeItem('User');
+    this.router.navigate(['/login']).then(() => {
       window.location.reload();
     });
-   }
+  }
+
+  get isAuth(){
+    return this.username.token;
+  }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { RegisterService } from 'src/app/services/register.service';
 @Component({
   selector: 'app-login',
@@ -13,8 +13,11 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   registerForm!: FormGroup;
   activeForm: string = 'Login';
+  isSubmited = false;
+  returnUrl = "";
 
-  constructor(private router: Router, private loginService: LoginService, private registerService: RegisterService) { }
+  constructor(private router: Router, private userService: UserService, private registerService: RegisterService, 
+    private activatedRoute:ActivatedRoute,) { }
 
   switchForm(formType: string): void {
     this.activeForm = formType;
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit {
 
 
   signIn() {
+    this.isSubmited = true;
     if (!this.loginForm.valid) {
       return;
     };
@@ -31,23 +35,24 @@ export class LoginComponent implements OnInit {
       Password: this.loginForm.value.Password
     };
 
-    this.loginService.login(loginData).subscribe((res) => {
-      if (res.message === 'Login successful') {
-        localStorage.setItem("isLogedIn", "true");
-        localStorage.setItem("Username", loginData.Username);
-        // localStorage.setItem("userId", res.userId);
-        this.router.navigate(['/home']).then(() => {
-          window.location.reload();
-        })
-      } else {
-        localStorage.setItem("isLogedIn", "false");
-        alert(res.message);
-      }
-      (error: any) => {
-        console.error('Error logging in:', error);
-        localStorage.setItem("isLogedIn", "false");
-        alert('An error occurred during login. Please try again.');
-      }
+    this.userService.login(loginData).subscribe(() => {
+      this.router.navigate(['/home']);
+      // if (res.message === 'Login successful') {
+      //   localStorage.setItem("isLogedIn", "true");
+      //   localStorage.setItem("Username", loginData.Username);
+      //   // localStorage.setItem("userId", res.userId);
+      //   this.router.navigate(['/home']).then(() => {
+      //     window.location.reload();
+      //   })
+      // } else {
+      //   localStorage.setItem("isLogedIn", "false");
+      //   alert(res.message);
+      // }
+      // (error: any) => {
+      //   console.error('Error logging in:', error);
+      //   localStorage.setItem("isLogedIn", "false");
+      //   alert('An error occurred during login. Please try again.');
+      // }
     })
   }
 
@@ -164,6 +169,9 @@ export class LoginComponent implements OnInit {
       Username: new FormControl(null, [Validators.required,]),
       Password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
+
     this.registerForm = new FormGroup({
       Username: new FormControl(null, [Validators.required,]),
       Email: new FormControl(null, [Validators.required, Validators.email]),
@@ -172,5 +180,9 @@ export class LoginComponent implements OnInit {
       pass: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       repass: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
+  }
+
+  get fc(){
+    return this.loginForm.controls;
   }
 }

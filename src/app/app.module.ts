@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -26,17 +28,35 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     SelectedFoodComponent,
     NotFoundComponent,
     LoginComponent,
-    LoadingComponent
+    LoadingComponent,
+    CheckoutPageComponent,
+    TitleComponent,
+    TextInputComponent,
+    InputContainerComponent,
+    InputValidationComponent,
+    OrderItemsListComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:'toast-buttom-right',
+      newestOnTop:false
+    })
   ],
   providers: [ 
     {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }import { ToastrModule } from 'ngx-toastr';
+import { TitleComponent } from './components/default/title/title.component';
+import { TextInputComponent } from './components/default/text-input/text-input.component';
+import { InputContainerComponent } from './components/default/input-container/input-container.component';
+import { InputValidationComponent } from './components/default/input-validation/input-validation.component';
+import { OrderItemsListComponent } from './components/default/order-items-list/order-items-list.component';
+

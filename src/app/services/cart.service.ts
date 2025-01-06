@@ -36,6 +36,6 @@ export class CartService {
   }
 
   getCart():cart{
-    return this.cart;
+    return this.cartSubject.value;
   }
 }
