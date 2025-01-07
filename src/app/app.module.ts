@@ -34,7 +34,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     TextInputComponent,
     InputContainerComponent,
     InputValidationComponent,
-    OrderItemsListComponent
+    OrderItemsListComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -59,4 +60,5 @@ import { TextInputComponent } from './components/default/text-input/text-input.c
 import { InputContainerComponent } from './components/default/input-container/input-container.component';
 import { InputValidationComponent } from './components/default/input-validation/input-validation.component';
 import { OrderItemsListComponent } from './components/default/order-items-list/order-items-list.component';
+import { MapComponent } from './components/default/map/map.component';
 
