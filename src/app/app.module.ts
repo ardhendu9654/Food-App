@@ -50,6 +50,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     })
   ],
   providers: [ 
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true },
     {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
@@ -61,4 +62,5 @@ import { InputContainerComponent } from './components/default/input-container/in
 import { InputValidationComponent } from './components/default/input-validation/input-validation.component';
 import { OrderItemsListComponent } from './components/default/order-items-list/order-items-list.component';
 import { MapComponent } from './components/default/map/map.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
