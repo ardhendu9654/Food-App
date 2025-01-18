@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { User } from '../Models/user';
 import { IUserLogin } from 'src/interfaces/IUserLogin';
 import { ToastrService } from 'ngx-toastr';
+import { USER_LOGIN_URL } from '../urls';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 export class UserService {
   private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable:Observable<User>;
-  private apiUrl = 'http://localhost:5000/api/users/login';
-  // private apiUrl2 ='http://localhost:4500/foods';
 
   constructor(private http: HttpClient, private toastrService:ToastrService) {
     this.userObservable = this.userSubject.asObservable();
@@ -23,7 +22,7 @@ export class UserService {
   }
 
   login(userLogin:IUserLogin):Observable<User>{
-    return this.http.post<User>(this.apiUrl,userLogin).pipe(
+    return this.http.post<User>(USER_LOGIN_URL,userLogin).pipe(
       tap({
         next:(user) =>{
           this.setUserToLocalStorage(user);

@@ -45,7 +45,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     HttpClientModule,
     ToastrModule.forRoot({
       timeOut:3000,
-      positionClass:'toast-buttom-right',
+      positionClass:'toast-top-right',
       newestOnTop:false
     })
   ],
@@ -55,7 +55,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }import { ToastrModule } from 'ngx-toastr';
+export class AppModule { }
+import { ToastrModule } from 'ngx-toastr';
 import { TitleComponent } from './components/default/title/title.component';
 import { TextInputComponent } from './components/default/text-input/text-input.component';
 import { InputContainerComponent } from './components/default/input-container/input-container.component';
