@@ -18,10 +18,13 @@ export class HeaderComponent {
     userService.userObservable.subscribe((newUser) => {
       this.username = newUser ;
     })
-
-    cartservice.getCartQuantity().subscribe((newcart) => {
-      this.cartQuantity = newcart.totalQuantity;
+    
+    cartservice.getCartObservable().subscribe((newCart)=>{
+      this.cartQuantity = newCart.totalCount;
     })
+    // cartservice.getCartQuantity().subscribe((newcart) => {
+    //   this.cartQuantity = newcart.totalQuantity;
+    // })
   }
 
   logout() {
