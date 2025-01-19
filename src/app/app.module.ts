@@ -35,7 +35,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     InputContainerComponent,
     InputValidationComponent,
     OrderItemsListComponent,
-    MapComponent
+    MapComponent,
+    PaymentPageComponent
   ],
   imports: [
     BrowserModule,
@@ -64,4 +65,5 @@ import { InputValidationComponent } from './components/default/input-validation/
 import { OrderItemsListComponent } from './components/default/order-items-list/order-items-list.component';
 import { MapComponent } from './components/default/map/map.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
