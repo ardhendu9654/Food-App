@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { RegisterService } from 'src/app/services/register.service';
+import { IUserRegister } from 'src/interfaces/IUserRegister';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -57,24 +58,28 @@ export class LoginComponent implements OnInit {
   }
 
   SignUp() {
+    this.isSubmited = true;
     if (!this.registerForm.valid) {
       console.log('Form is invalid');
       return;
     }
-    const registerData = {
+    const registerData:IUserRegister = {
       Username: this.registerForm.value.Username,
       Email: this.registerForm.value.Email,
       Mobile: this.registerForm.value.Mobile,
-      Password: this.registerForm.value.pass
+      address: this.registerForm.value.address,
+      Password: this.registerForm.value.pass,
+      ConfirmPassword: this.registerForm.value.repass,
+
     }
-    this.registerService.register(registerData).subscribe((res) => {
+    this.userService.register(registerData).subscribe((res) => {
       console.log(res);
 
     })
-    const Username = this.registerForm.value.Username
-    const pass = this.registerForm.value.pass;
-    const repass = this.registerForm.value.repass;
-    console.log(Username, pass, repass);
+    // const Username = this.registerForm.value.Username
+    // const pass = this.registerForm.value.pass;
+    // const repass = this.registerForm.value.repass;
+    // console.log(Username, pass, repass);
 
     this.activeForm = 'Login';
   }
@@ -138,6 +143,19 @@ export class LoginComponent implements OnInit {
     return null;
   }
 
+  regAddress(){
+    const address = this.registerForm.get('Username');
+    if (address?.touched && !address.valid) {
+      if (address.errors?.['required']) {
+        return 'Address is required';
+      }
+      if (address.errors?.['maxlength']) {
+        return 'Please enter within 20 charecter';
+      }
+    }
+    return null;
+  }
+
   regPassword() {
     const pass = this.registerForm.get('pass');
     if (pass?.touched && !pass.valid) {
@@ -177,6 +195,7 @@ export class LoginComponent implements OnInit {
       Email: new FormControl(null, [Validators.required, Validators.email]),
       Mobile: new FormControl(null, [Validators.required, Validators.maxLength(10),
       Validators.pattern('^[0-9]{10}$')]),
+      address: new FormControl(null, [Validators.required,Validators.maxLength(20)]),
       pass: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       repass: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
@@ -184,5 +203,8 @@ export class LoginComponent implements OnInit {
 
   get fc(){
     return this.loginForm.controls;
+  }
+  get rfc() {
+    return this.registerForm.controls;
   }
 }

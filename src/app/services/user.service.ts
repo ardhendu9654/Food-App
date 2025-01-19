@@ -4,8 +4,10 @@ import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { User } from '../Models/user';
 import { IUserLogin } from 'src/interfaces/IUserLogin';
 import { ToastrService } from 'ngx-toastr';
-import { USER_LOGIN_URL } from '../urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../urls';
+import { IUserRegister } from 'src/interfaces/IUserRegister';
 
+const USER_KEY = 'User';
 @Injectable({
   providedIn: 'root',
 })
@@ -28,7 +30,7 @@ export class UserService {
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
-            `welcome to FoodFantasy &{user.Username}!`,
+            `welcome to FoodFantasy ${user.Username}!`,
             'login Successful'
           )
         },
@@ -37,6 +39,31 @@ export class UserService {
         }
       })
     );
+  }
+
+  register(userRegiser:IUserRegister): Observable<User>{
+    return this.http.post<User>(USER_REGISTER_URL, userRegiser).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(
+            `Welcome to the Foodmine ${user.Username}`,
+            'Register Successful'
+          )
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error,
+            'Register Failed')
+        }
+      })
+    )
+  }
+
+  logout(){
+    this.userSubject.next(new User());
+    localStorage.removeItem(USER_KEY);
+    window.location.reload();
   }
 
   private setUserToLocalStorage(user:User){

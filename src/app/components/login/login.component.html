@@ -72,6 +72,12 @@
                 </div>
 
                 <div class="form-outline">
+                    <div class="err">{{regAddress()}}</div>
+                    <input type="text" id="registeraddress" class="form-control" name="address" formControlName="address"/>
+                    <label class="form-label" for="registeraddress">Address</label>
+                </div>
+
+                <div class="form-outline">
                     <div class="err">{{regPassword()}}</div>
                     <input type="password" id="registerPassword" class="form-control" name="Password" formControlName="pass"/>
                     <label class="form-label" for="registerPassword">Password</label>
