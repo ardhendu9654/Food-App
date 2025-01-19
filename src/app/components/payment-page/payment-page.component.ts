@@ -15,6 +15,8 @@ export class PaymentPageComponent {
     orderService.getNewOrderForCurrentUser().subscribe({
       next: (order) => {
         this.order = order;
+        console.log("payment page details",this.order);
+        
       },
       error: () =>{
         router.navigateByUrl('/checkout')

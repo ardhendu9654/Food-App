@@ -14,6 +14,7 @@
 }
 
 .summary > div{
+    color: white;
     display: flex;
     margin-top: 0.7rem;
 }
