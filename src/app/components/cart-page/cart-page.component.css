@@ -2,11 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: 1.5rem;
+    /* margin: 1.5rem; */
     color: aliceblue;
 }
 ul{
     display: flex;
+    position: relative;
+    top: 4rem;
     flex-direction: column;
     flex: 3 0;
     border: 1px solid orange;
@@ -62,6 +64,8 @@ ul .remove-button:hover{
 }
 .checkout{
     display: flex;
+    position: relative;
+    top: 3.5rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;

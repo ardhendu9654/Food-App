@@ -5,6 +5,8 @@ ul{
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
+    position: relative;
+    top: 14rem;
     background-color: rgb(22, 19, 68);
 }
 li a {
@@ -68,7 +70,7 @@ li a img{
     left: 160px;
     background: transparent;
     padding: 0.3rem 100% 0 0;
-    color: gray;
+    color: rgb(90, 237, 100);
     margin-top: 0.7rem;
     font-size: 1.1rem;
 }

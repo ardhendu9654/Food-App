@@ -1,9 +1,11 @@
 header{
-    position: relative;
+    position: fixed;
+    width: 100%;
     background: rgb(19, 5, 58);
     padding: 0;
     border-bottom: 2px solid red;
     font-weight: bold;
+    z-index: 10;
 }
 a,.user{
     color: brown;

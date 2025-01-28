@@ -3,13 +3,15 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 3rem;
+    /* margin: 3rem; */
 }
 .container > *{
     min-width: 25rem;
     max-width: 40rem;
 }
 img{
+    position: relative;
+    top: 2.5rem;
     border-radius: 3rem;
     flex: 1 0;
     object-fit: cover;
@@ -44,7 +46,7 @@ img{
 .details .origins{
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
 }
 .details .origins > span{
     padding: .5rem;
@@ -55,7 +57,7 @@ img{
 }
 .details .price{
     font-size: 1.8rem;
-    margin: 1rem 1rem 1rem 0;
+    /* margin: 1rem 1rem 1rem 0; */
     color: green;
 }
 .details .price::before{
@@ -70,8 +72,9 @@ img{
     padding: 1rem;
     border-radius: 10rem;
     outline: none;
+    opacity: .7;
 }
 .details button:hover{
-    opacity: .9;
+    opacity: 1;
     cursor: pointer;
 }

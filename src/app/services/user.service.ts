@@ -33,9 +33,11 @@ export class UserService {
             `welcome to FoodFantasy ${user.Username}!`,
             'login Successful'
           )
+          localStorage.setItem("islogedIn","true");
         },
         error: (errorResponse)=>{
           this.toastrService.error(errorResponse.error,'Login Failed');
+          localStorage.setItem("islogedIn","false");
         }
       })
     );

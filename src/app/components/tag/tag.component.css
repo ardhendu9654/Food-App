@@ -1,4 +1,7 @@
 div{
+    position: fixed;
+    top: 6.7rem;
+    z-index: 8;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -9,6 +12,7 @@ div{
 div a{
     background-color: #e7e5e5;
     padding: 0.3rem 1rem;
+    text-decoration: none;
     margin: 0.2rem 0.55rem;
     border-radius: 10rem;
     font-weight: 600;
@@ -17,4 +21,5 @@ div a{
 div a:hover{
     background: rgb(252, 198, 97);
     transform: scale(1.2);
+    color: black;
 }

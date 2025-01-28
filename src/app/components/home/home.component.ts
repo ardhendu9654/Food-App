@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
   foods: Food[] = [];
   constructor(private foodService: FoodService, activatedRoute: ActivatedRoute) {
 
-    // localStorage.setItem("islogedIn","false");
-
     let foodsObservable:Observable<Food[]>;
 
     activatedRoute.params.subscribe((params) => {

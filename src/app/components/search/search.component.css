@@ -1,4 +1,8 @@
 div{
+    position: fixed;
+    top: 3.6rem;
+    width: 100%;
+    z-index: 8;
     display: flex;
     justify-content: center;
     background-color: rgb(12, 6, 42);

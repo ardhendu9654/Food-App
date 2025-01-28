@@ -38,22 +38,6 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(loginData).subscribe(() => {
       this.router.navigate(['/home']);
-      // if (res.message === 'Login successful') {
-      //   localStorage.setItem("isLogedIn", "true");
-      //   localStorage.setItem("Username", loginData.Username);
-      //   // localStorage.setItem("userId", res.userId);
-      //   this.router.navigate(['/home']).then(() => {
-      //     window.location.reload();
-      //   })
-      // } else {
-      //   localStorage.setItem("isLogedIn", "false");
-      //   alert(res.message);
-      // }
-      // (error: any) => {
-      //   console.error('Error logging in:', error);
-      //   localStorage.setItem("isLogedIn", "false");
-      //   alert('An error occurred during login. Please try again.');
-      // }
     })
   }
 
@@ -76,10 +60,6 @@ export class LoginComponent implements OnInit {
       console.log(res);
 
     })
-    // const Username = this.registerForm.value.Username
-    // const pass = this.registerForm.value.pass;
-    // const repass = this.registerForm.value.repass;
-    // console.log(Username, pass, repass);
 
     this.activeForm = 'Login';
   }
