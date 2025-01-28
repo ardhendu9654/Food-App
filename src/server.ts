@@ -16,14 +16,14 @@ dotenv.config();
 const port = 5000;
 const jwtSecret = process.env.JWT_SECRET || "someRandomText";
 dbConnect();
- 
+
 const app = express();
 app.use(cors({
     credentials: true,
     origin: ["http://localhost:4200"]
 }));
 app.use(express.json());
-app.use("/api/orders", orderRouter) 
+app.use("/api/orders", orderRouter)
 
 
 app.get('/seed', asyncHandler(

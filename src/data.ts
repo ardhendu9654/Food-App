@@ -431,7 +431,7 @@ export const sample_foods: any[] = [
         origins: ['kolkata', 'saltlake'],
         tags: ['lunch', 'dinner', 'paneer']
     }
-]
+] 
 
 export const sample_users: any[] = [
     {
