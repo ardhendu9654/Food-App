@@ -23,7 +23,7 @@ app.use(cors({
     origin: ["http://localhost:4200"]
 }));
 app.use(express.json());
-app.use("/api/orders", orderRouter)
+app.use("/api/orders", orderRouter) 
 
 
 app.get('/seed', asyncHandler(
