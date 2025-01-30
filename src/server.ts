@@ -17,6 +17,7 @@ const port = 5000;
 const jwtSecret = process.env.JWT_SECRET || "someRandomText";
 dbConnect();
 
+
 const app = express();
 app.use(cors({
     credentials: true,
